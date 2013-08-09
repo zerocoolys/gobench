@@ -22,9 +22,11 @@ type BenchmarkController struct {
 }
 
 func (this *BenchmarkController) Post(){
+	this.Layout = "benchmark.html"
 	this.TplNames = "benchmark.tpl"
+	this.Data["Url"] = this.GetString("url")
 	str,err := httplib.Post(this.Ctx.Request.Form.Get("url")).String()
-	
+	fmt.Println(str, err)
 }
 	
 
