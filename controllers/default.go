@@ -29,4 +29,15 @@ func (this *BenchmarkController) Post(){
 	fmt.Println(str, err)
 }
 	
+type RunController struct {
+	beego.Controller
+}
 
+func (this *RunController) Post(){
+	
+	fmt.Println("hello")
+	var reqName = this.GetString("reqName")
+	fmt.Println(reqName)
+	var str,err = httplib.Post(this.GetString("reqUrl")).String()
+	fmt.Println(str,err)
+}
